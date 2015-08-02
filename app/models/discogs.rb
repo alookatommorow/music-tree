@@ -4,19 +4,19 @@ module Discogs
     base_uri "https://api.discogs.com"
 
     def artist(artist_id = "108713")
-      self.class.get("/artists/#{artist_id}", headers: headers)
+      self.class.get("/artists/#{artist_id}")
+    end
+
+    def search(params)
+        self.class.get("/database/search?q=#{params}&key=#{ENV['CONSUMER_KEY']}&secret=#{ENV['CONSUMER_SECRET']}")
     end
 
     def user_agent
       "MusicTree/1.0"
     end
 
-    def token
-      "LgBwBDebtoTjAnoHNXnbjvlkXBfaRODjEKtHAQLH"
-    end
-
     def headers
-      {"User-Agent" => user_agent}
+      {"key" => ENV["CONSUMER_KEY"], "secret" => ENV["CONSUMER_SECRET"]}
     end
 
   end
