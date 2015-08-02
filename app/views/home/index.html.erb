@@ -1,2 +1,8 @@
 <h1>Hello</h1>
-<%= @artist %>
+<ul>
+    <%= @artist["profile"] %>
+    <% @results["results"].each do |res| %>
+        <li><%=  res["title"] %>: <%= res["type"] %>
+        </li>
+    <% end %>
+</ul>
