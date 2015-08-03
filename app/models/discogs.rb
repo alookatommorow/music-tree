@@ -8,7 +8,7 @@ module Discogs
     end
 
     def search(params)
-        self.class.get("/database/search?q=#{params}&key=#{ENV['CONSUMER_KEY']}&secret=#{ENV['CONSUMER_SECRET']}")
+        self.class.get("/database/search?q=#{params}&key=#{ENV['CONSUMER_KEY']}&secret=#{ENV['CONSUMER_SECRET']}&per_page=100")
     end
 
     def user_agent
