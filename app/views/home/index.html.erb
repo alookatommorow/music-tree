@@ -1,8 +1,15 @@
-<h1>Hello</h1>
-<ul>
-    <%= @artist["profile"] %>
-    <% @results["results"].each do |res| %>
-        <li><%=  res["title"] %>: <%= res["type"] %>
-        </li>
-    <% end %>
-</ul>
+<div class="home-container" ng-controller="MusicController as music">
+    <div class="search-container" ng-controller="SearchController as searchCtrl">
+
+        <form name="searchForm" ng-submit="searchCtrl.submit()">
+            <input placeholder="Enter search..." ng-model="searchCtrl.query"  required>
+            <input type="submit" value="Search">
+            <pre>list={{searchCtrl.query}}</pre>
+        </form>
+
+        <ul ng-repeat="result in searchCtrl.results">
+            <li>{{result.title}}</li>
+        </ul>
+
+    </div>
+</div>
