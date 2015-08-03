@@ -6,15 +6,8 @@ class HomeController < ApplicationController
     end
 
     def search
-        p "*"*100
-        p params
-        p "*"*100
-        if request.xhr?
-        @results = Discogs::Client.new.search(params[:main])
-            redirect_to '/'
-        else
-            redirect_to '/'
-        end
+        results = Discogs::Client.new.search(params[:query])
+        render json: results
     end
 
 end

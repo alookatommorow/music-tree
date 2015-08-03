@@ -7,5 +7,9 @@
             <pre>list={{searchCtrl.query}}</pre>
         </form>
 
+        <ul ng-repeat="result in searchCtrl.results">
+            <li>{{result.title}}</li>
+        </ul>
+
     </div>
 </div>
