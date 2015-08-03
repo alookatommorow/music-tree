@@ -29,11 +29,13 @@
     };
   });
 
-  // app.filter('capitalize', function () {
-  //   return function(input) {
-  //       return input.charAt(0).toUpperCase() + input.slice(1);
-  //   };
-  // });
+  app.filter('release', function () {
+    return function(input) {
+      if (input.type !== "release") {
+        return input;
+      };
+    };
+  });
 
   app.controller('MusicController', function() {
 
@@ -53,11 +55,19 @@
             });
             this.query = "";
         };
-        this.displayType = function() {
-          return "hello";
+  });
+
+
+  app.controller('ResultsController', function($http){
+        this.selected = 1000;
+        this.selectResult = function(choose) {
+          this.selected = choose;
+        };
+        this.isSelected = function(check) {
+          return this.selected === check;
         };
 
-  });
+    });
 
 
 

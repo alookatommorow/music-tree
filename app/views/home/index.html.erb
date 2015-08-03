@@ -1,18 +1,30 @@
 <div class="debug home-container" ng-controller="MusicController as music">
-    <div class="debug search-container" ng-controller="SearchController as searchCtrl">
+    <div class="debug" ng-controller="SearchController as searchCtrl">
+        <div class="debug text-center">
 
-        <form class="debug" name="searchForm" ng-submit="searchCtrl.submit()">
-            <input placeholder="Enter search..." ng-model="searchCtrl.query"  required>
-            <input type="submit" value="Search">
-        </form>
+            <form class="debug search-form" name="searchForm" ng-submit="searchCtrl.submit()">
+                <input placeholder="Enter search..." ng-model="searchCtrl.query"  required>
+                <input type="submit" value="Search">
+            </form>
+        </div>
 
-        <ul ng-repeat="result in searchCtrl.results">
-            <li class="debug result-item">
-                <img src="{{result.thumb}}">
-                <p class="result-title">{{result.title }}</p>
-                <p class="pull-right">{{result.type | type}}</p>
-            </li>
+        <ul class="nav nav-pills" ng-repeat="result in searchCtrl.results" ng-controller="ResultsController as resultsCtrl">
+            <div>
+                <a href ng-click="resultsCtrl.selectResult($index)">
+                    <li class="debug result-item">
+                        <img src="{{result.thumb}}">
+                        <p class="result-title">{{result.title}}</p>
+                        <p class="pull-right">{{result.type | type}}</p>
+                        <p>{{$index}}</p>
+                        <p>{{resultsCtrl.selected}}</p>
+
+                    </li>
+                </a>
+            </div>
+            <span class="debug" ng-show="resultsCtrl.isSelected($index)">
+                    <p>in tab</p>
+            </span>
         </ul>
-
     </div>
+
 </div>
