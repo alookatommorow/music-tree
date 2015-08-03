@@ -12,5 +12,47 @@
 //= require_self
 //= require jquery
 //= require_tree .
+//= require_tree ./angular
 
-console.log('hello');
+
+(function (){
+
+  var app = angular.module('music', []);
+
+
+  // var nuts = [
+  //           {description: "shittards",},
+  //           {description: "bag", }
+  //           ];
+
+  app.controller('MusicController', function() {
+        this.garbage = "Hello";
+    });
+
+  app.controller('SearchController', function($http){
+
+        this.results = [];
+        this.query = "";
+        var stuff = this.results;
+        this.submit = function() {
+            console.log(this.query + "hella");
+            $http.post('/search', {query: this.query});
+            this.query = "";
+        };
+
+
+        // .success(function(response) {
+        //     search.results = response;
+        //     console.log(response)
+        // });
+
+
+
+  } );
+
+
+
+
+
+
+  })();
