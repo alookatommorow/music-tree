@@ -1,14 +1,17 @@
-<div class="home-container" ng-controller="MusicController as music">
-    <div class="search-container" ng-controller="SearchController as searchCtrl">
+<div class="debug home-container" ng-controller="MusicController as music">
+    <div class="debug search-container" ng-controller="SearchController as searchCtrl">
 
-        <form name="searchForm" ng-submit="searchCtrl.submit()">
+        <form class="debug" name="searchForm" ng-submit="searchCtrl.submit()">
             <input placeholder="Enter search..." ng-model="searchCtrl.query"  required>
             <input type="submit" value="Search">
-            <pre>list={{searchCtrl.query}}</pre>
         </form>
 
         <ul ng-repeat="result in searchCtrl.results">
-            <li>{{result.title}}</li>
+            <li class="debug result-item">
+                <img src="{{result.thumb}}">
+                <p class="result-title">{{result.title }}</p>
+                <p class="pull-right">{{result.type | type}}</p>
+            </li>
         </ul>
 
     </div>

@@ -13,6 +13,18 @@
  *= require_tree .
  *= require_self
  */
+.debug {
+    border: 1px solid red;
+ }
+
+ .result-item > * {
+    display: inline-block;
+    margin-right: 20px;
+ }
+ .result-title {
+    margin-left: 30px;
+
+ }
 
  .home-container {
     background-color: gray;
@@ -20,3 +32,6 @@
     margin-right: 50px;
 
  }
+
+
+

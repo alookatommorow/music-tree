@@ -19,11 +19,21 @@
 
   var app = angular.module('music', []);
 
+  app.filter('type', function () {
+    return function(input) {
+      if (input === "master" || input === "release") {
+        return "Album";
+      } else {
+        return input.charAt(0).toUpperCase() + input.slice(1);
+      }
+    };
+  });
 
-  // var nuts = [
-  //           {description: "shittards",},
-  //           {description: "bag", }
-  //           ];
+  // app.filter('capitalize', function () {
+  //   return function(input) {
+  //       return input.charAt(0).toUpperCase() + input.slice(1);
+  //   };
+  // });
 
   app.controller('MusicController', function() {
 
@@ -43,6 +53,10 @@
             });
             this.query = "";
         };
+        this.displayType = function() {
+          return "hello";
+        };
+
   });
 
 
