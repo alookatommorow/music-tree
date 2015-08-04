@@ -66,31 +66,30 @@
 
 
   app.controller('ResultsController', function($http){
-        this.selected = 1000;
-        this.selectResult = function(choose) {
-          this.selected = choose;
-        };
-        this.isSelected = function(check) {
-          return this.selected === check;
-        };
-        this.results = [];
-        this.query = "";
-        var that = this;
-        this.submit = function() {
-            $http.post('/subsearch', {query: this.query}).success(function(response) {
-                that.results = [];
-                console.log(response)
-                for (var i = 0, x=response.releases.length; i < x; i++) {
-                    that.results.push(response.releases[i]);
-                };
-            });
-            this.query = "";
-        };
-
-    });
+      this.selected = -1;
+      this.results = [];
+      this.selectResult = function(index, result) {
+        this.selected = index;
+        doSubsearch($http, this, result);
+      };
+      this.isSelected = function(check) {
+        return this.selected === check;
+      };
 
 
+  });
 
+
+  var doSubsearch = function($http, controller, result) {
+      $http.post('/subsearch', {query: result.id}).success(function(response) {
+          controller.results = [];
+          console.log(response)
+          for (var i = 0, x=response.releases.length; i < x; i++) {
+              controller.results.push(response.releases[i]);
+          };
+      });
+      controller.query = "";
+  };
 
 })();
 

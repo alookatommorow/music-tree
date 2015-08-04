@@ -23,10 +23,7 @@
                     <li class="debug list-group-item result-item">
                         <img src="{{result.thumb}}">
                         <p class="result-title">{{result.title}}</p>
-                        <form class="pull-right details-button"  ng-submit="resultsCtrl.submit()">
-                            <input ng-model="resultsCtrl.query" placeholder="{{result.id}}">
-                            <input ng-click="resultsCtrl.selectResult($index)" type="submit" value="Get Details">
-                        </form>
+                        <a href=""  ng-click="resultsCtrl.selectResult($index, result)">Get Details</a>
                         <p class="pull-right">{{result.type | type}}</p>
                     </li>
                     <div class="debug sub-result" ng-show="resultsCtrl.isSelected($index)">

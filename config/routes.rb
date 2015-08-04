@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
+    ACCEPT_JSON = -> (request) {
+        request.accepts.include?(:json)
+    }
 
-  get '*path', to: 'home#index'
-  root         to: 'home#index'
+    scope constraints: ACCEPT_JSON do
+        post '/search', to: 'home#search'
+        post '/artists/:artist_id', to: 'home#subsearch'
+        # resources :artists, only: [:show]
+    end
 
-  post '/search', to: 'home#search'
-  post '/subsearch', to: 'home#subsearch'
+    get '*path', to: 'home#index'
+    root         to: 'home#index'
 
 end
