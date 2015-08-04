@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   root         to: 'home#index'
 
   post '/search', to: 'home#search'
+  post '/subsearch', to: 'home#subsearch'
 
 end

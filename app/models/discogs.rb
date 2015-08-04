@@ -8,7 +8,11 @@ module Discogs
     end
 
     def search(query, specs)
-        self.class.get("/database/search?q=#{query}&#{specs}&key=#{ENV['CONSUMER_KEY']}&secret=#{ENV['CONSUMER_SECRET']}&per_page=100")
+        self.class.get("/database/search?q=#{query}&?#{specs}&key=#{ENV['CONSUMER_KEY']}&secret=#{ENV['CONSUMER_SECRET']}&per_page=100")
+    end
+
+    def discog(id)
+      self.class.get("/artists/#{id}/releases")
     end
 
     def headers

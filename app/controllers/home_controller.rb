@@ -10,4 +10,11 @@ class HomeController < ApplicationController
         render json: results
     end
 
+    def subsearch
+        p params
+        results = Discogs::Client.new.discog(params[:query])
+        render json: results
+
+    end
+
 end

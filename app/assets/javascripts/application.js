@@ -59,6 +59,22 @@
         };
   });
 
+  app.controller('SubSearch Controller', function($http){
+        this.subResults = [];
+        this.subQuery = "";
+        var that = this;
+        this.submit = function() {
+            $http.post('/subsearch', {query: this.subQuery}).success(function(response) {
+                that.results = [];
+                console.log(response)
+                for (var i = 0, x=response.results.length; i < x; i++) {
+                    that.results.push(response.results[i]);
+                };
+            });
+            this.query = "";
+        };
+  });
+
 
   app.controller('ResultsController', function($http){
         this.selected = 1000;
