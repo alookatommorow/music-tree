@@ -44,9 +44,10 @@
   app.controller('SearchController', function($http){
         this.results = [];
         this.query = "";
+        this.specs = "";
         var that = this;
         this.submit = function() {
-            $http.post('/search', {query: this.query}).success(function(response) {
+            $http.post('/search', {query: this.query, specs: this.specs}).success(function(response) {
                 that.results = [];
                 console.log(response)
                 for (var i = 0, x=response.results.length; i < x; i++) {
@@ -54,6 +55,7 @@
                 };
             });
             this.query = "";
+            this.specs = "";
         };
   });
 

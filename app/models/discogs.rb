@@ -7,12 +7,8 @@ module Discogs
       self.class.get("/artists/#{artist_id}")
     end
 
-    def search(params)
-        self.class.get("/database/search?q=#{params}&key=#{ENV['CONSUMER_KEY']}&secret=#{ENV['CONSUMER_SECRET']}&per_page=100")
-    end
-
-    def user_agent
-      "MusicTree/1.0"
+    def search(query, specs)
+        self.class.get("/database/search?q=#{query}&#{specs}&key=#{ENV['CONSUMER_KEY']}&secret=#{ENV['CONSUMER_SECRET']}&per_page=100")
     end
 
     def headers

@@ -4,6 +4,12 @@
 
             <form class="debug search-form" name="searchForm" ng-submit="searchCtrl.submit()">
                 <input placeholder="Enter search..." ng-model="searchCtrl.query"  required>
+                <select ng-model="searchCtrl.specs">
+                    <option disabled selected> -- select an option -- </option>
+                    <option value="artist">Artist</option>
+                    <option value="release_title">Album</option>
+                    <option value="label">Label</option>
+                </select>
                 <input type="submit" value="Search">
             </form>
         </div>
