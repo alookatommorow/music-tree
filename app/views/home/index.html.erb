@@ -1,6 +1,10 @@
 <div class="debug home-container" ng-controller="MusicController as music">
+    <div class="image-container">
+        <img src="musictree.png" height="150">
+    </div>
+
     <div class="debug" ng-controller="SearchController as searchCtrl">
-        <div class="debug text-center">
+        <div class="debug search-container">
 
             <form class="debug search-form" name="searchForm" ng-submit="searchCtrl.submit()">
                 <input placeholder="Enter search..." ng-model="searchCtrl.query"  required>
@@ -10,13 +14,13 @@
                     <option value="release_title">Album</option>
                     <option value="label">Label</option>
                 </select>
-                <input type="submit" value="Search">
+                <input type="button" class="btn btn-primary" value="Search">
             </form>
         </div>
 
-        <ul  ng-repeat="result in searchCtrl.results" ng-controller="ResultsController as resultsCtrl">
+        <ul class="list-group" ng-repeat="result in searchCtrl.results" ng-controller="ResultsController as resultsCtrl">
             <div>
-                    <li class="debug result-item">
+                    <li class="debug list-group-item result-item">
                         <img src="{{result.thumb}}">
                         <p class="result-title">{{result.title}}</p>
                         <form class="pull-right details-button"  ng-submit="resultsCtrl.submit()">
@@ -25,9 +29,9 @@
                         </form>
                         <p class="pull-right">{{result.type | type}}</p>
                     </li>
-                    <div class="debug" ng-show="resultsCtrl.isSelected($index)">
-                        <ul ng-repeat="result in resultsCtrl.results | orderBy: '+year'">
-                            <li class="debug result-item">
+                    <div class="debug sub-result" ng-show="resultsCtrl.isSelected($index)">
+                        <ul class="list-group" ng-repeat="result in resultsCtrl.results | orderBy: '+year'">
+                            <li class="debug list-group-item result-item">
                                 <p class="result-title">{{result.title}}</p>
                                 <p class="result-title">{{result.year}}</p>
                             </li>
