@@ -14,18 +14,26 @@
             </form>
         </div>
 
-        <ul class="nav nav-pills" ng-repeat="result in searchCtrl.results" ng-controller="ResultsController as resultsCtrl">
+        <ul  ng-repeat="result in searchCtrl.results" ng-controller="ResultsController as resultsCtrl">
             <div>
-                <a href ng-click="resultsCtrl.selectResult($index)">
                     <li class="debug result-item">
                         <img src="{{result.thumb}}">
                         <p class="result-title">{{result.title}}</p>
+                        <form class="pull-right details-button"  ng-submit="resultsCtrl.submit()">
+                            <input ng-model="resultsCtrl.query" placeholder="{{result.id}}">
+                            <input ng-click="resultsCtrl.selectResult($index)" type="submit" value="Get Details">
+                        </form>
                         <p class="pull-right">{{result.type | type}}</p>
-                    </li></a>
+                    </li>
+                    <div class="debug" ng-show="resultsCtrl.isSelected($index)">
+                        <ul ng-repeat="result in resultsCtrl.results | orderBy: '+year'">
+                            <li class="debug result-item">
+                                <p class="result-title">{{result.title}}</p>
+                                <p class="result-title">{{result.year}}</p>
+                            </li>
+                        </ul>
+                    </div>
             </div>
-            <span class="debug" ng-show="resultsCtrl.isSelected($index)">
-                    <p>in tab</p>
-            </span>
         </ul>
     </div>
 

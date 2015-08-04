@@ -60,19 +60,7 @@
   });
 
   app.controller('SubSearch Controller', function($http){
-        this.subResults = [];
-        this.subQuery = "";
-        var that = this;
-        this.submit = function() {
-            $http.post('/subsearch', {query: this.subQuery}).success(function(response) {
-                that.results = [];
-                console.log(response)
-                for (var i = 0, x=response.results.length; i < x; i++) {
-                    that.results.push(response.results[i]);
-                };
-            });
-            this.query = "";
-        };
+
   });
 
 
@@ -83,6 +71,19 @@
         };
         this.isSelected = function(check) {
           return this.selected === check;
+        };
+        this.results = [];
+        this.query = "";
+        var that = this;
+        this.submit = function() {
+            $http.post('/subsearch', {query: this.query}).success(function(response) {
+                that.results = [];
+                console.log(response)
+                for (var i = 0, x=response.releases.length; i < x; i++) {
+                    that.results.push(response.releases[i]);
+                };
+            });
+            this.query = "";
         };
 
     });
