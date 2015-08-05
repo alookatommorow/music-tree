@@ -14,9 +14,56 @@
  *= require_self
  */
 
- .home-container {
-    background-color: gray;
-    margin-left: 50px;
-    margin-right: 50px;
+/** {
+    border: 1px solid red;
+ }*/
+
+ .image-container {
+    text-align: center;
+    margin-top: 20px;
+ }
+
+ .search-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+ }
+
+ .result-item > * {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: medium;
+ }
+ .result-title {
+    margin-left: 30px;
 
  }
+
+ .sub-result {
+    margin: 20px
+ }
+
+ .home-container {
+    margin-left: 50px;
+    margin-right: 50px;
+    font-family: "Gill Sans";
+
+ }
+
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+

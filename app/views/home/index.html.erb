@@ -1,15 +1,41 @@
-<div class="home-container" ng-controller="MusicController as music">
-    <div class="search-container" ng-controller="SearchController as searchCtrl">
-
-        <form name="searchForm" ng-submit="searchCtrl.submit()">
-            <input placeholder="Enter search..." ng-model="searchCtrl.query"  required>
-            <input type="submit" value="Search">
-            <pre>list={{searchCtrl.query}}</pre>
-        </form>
-
-        <ul ng-repeat="result in searchCtrl.results">
-            <li>{{result.title}}</li>
-        </ul>
-
+<div class="debug home-container" ng-controller="MusicController as music">
+    <div class="image-container">
+        <img src="musictree.png" height="150">
     </div>
+
+    <div class="debug" ng-controller="SearchController as searchCtrl">
+        <div class="debug search-container">
+
+            <form class="debug search-form" name="searchForm" ng-submit="searchCtrl.submit()">
+                <input name="search" placeholder="enter search..." ng-model="searchCtrl.query"  required>
+                <select ng-model="searchCtrl.specs">
+                    <option disabled selected> -- select an option -- </option>
+                    <option value="artist">Artist</option>
+                    <option value="release_title">Album</option>
+                    <option value="label">Label</option>
+                </select>
+                <input type="button" class="btn btn-primary" value="Search">
+            </form>
+        </div>
+
+        <ul class="list-group" ng-repeat="result in searchCtrl.results" ng-controller="ResultsController as resultsCtrl">
+            <div>
+                    <li class="debug list-group-item result-item">
+                        <img src="{{result.thumb}}">
+                        <p class="result-title">{{result.title}}</p>
+                        <a class="pull-right btn btn-default btn-sm" href=""  ng-click="resultsCtrl.selectResult($index, result)">Get Details</a>
+                        <p class="pull-right">{{result.type | type}}</p>
+                    </li>
+                    <div class="debug sub-result" ng-show="resultsCtrl.isSelected($index)">
+                        <ul class="list-group" ng-repeat="result in resultsCtrl.results | orderBy: '+year'">
+                            <li class="debug list-group-item result-item">
+                                <p class="result-title">{{result.title}}</p>
+                                <p class="result-title">{{result.year}}</p>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+        </ul>
+    </div>
+
 </div>
