@@ -64,6 +64,12 @@
 
   });
 
+  app.directive('searchForm', function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'search-form.html',
+    };
+   });
 
   app.controller('ResultsController', function($http){
       this.selected = -1;

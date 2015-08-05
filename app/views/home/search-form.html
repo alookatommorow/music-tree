@@ -1,0 +1,10 @@
+<form class="debug search-form" name="searchForm" ng-submit="searchCtrl.submit()">
+                <input name="search" placeholder="enter search..." ng-model="searchCtrl.query"  required>
+                <select ng-model="searchCtrl.specs">
+                    <option disabled selected> -- select an option -- </option>
+                    <option value="artist">Artist</option>
+                    <option value="release_title">Album</option>
+                    <option value="label">Label</option>
+                </select>
+                <input type="button" class="btn btn-primary" value="Search">
+            </form>
