@@ -2,7 +2,7 @@
 
 MusicTree is a client for the [Discogs API](https://www.discogs.com/developers/) that provides a clean, easy-to-use interface to interact with Discogs and obtain information from their music archives.  Users can search an artist in the database and instantly view their discography.  MusicTree was an experiment.  Built over the course of four days, it challenged me to learn Angular.js and put it to use in the creation of a small app.
 
-![Screenshot](https://github.com/alookatommorow/music-tree/blob/master/public/musictree.png)
+![Screenshot](https://github.com/alookatommorow/music-tree/blob/master/public/musictreescreen.png)
 
 ##Technology
 
