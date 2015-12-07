@@ -19,13 +19,6 @@ describe 'http://localhost:3000', type: :feature do
 
     expect(page).to have_text('Shades Of A Blue Orphanage')
 
-
-
-    # fill_in 'search', with:'Rick and Morty'
-
-    # find_field('search').native.send_keys(:return)
-
-    # expect(page).to have_text('Rick and Morty season 2')
   end
 
 end
